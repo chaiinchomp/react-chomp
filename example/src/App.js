@@ -1,10 +1,7 @@
-import React from 'react'
-
-import { ExampleComponent } from 'react-chomp'
-import 'react-chomp/dist/index.css'
+import React from 'react';
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
-}
+  return <div>This is a placeholder</div>;
+};
 
-export default App
+export default App;
