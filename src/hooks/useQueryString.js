@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { parse, stringify } from 'query-string';
+import qs from 'query-string';
 
 /** shamelessly copy/pasted https://medium.com/swlh/81ccdfcb174f */
 export default function useQueryString(key, initialValue) {
@@ -21,19 +21,19 @@ function setQueryStringWithoutPageReload(qsValue) {
 }
 
 function setQueryStringValue(key, value, queryString = window.location.search) {
-  const values = parse(queryString);
+  const values = qs.parse(queryString);
   let newQsValue;
   if (!value) {
     const updatedValues = { ...values };
     delete updatedValues[key];
-    newQsValue = stringify(updatedValues);
+    newQsValue = qs.stringify(updatedValues);
   } else {
-    newQsValue = stringify({ ...values, [key]: value });
+    newQsValue = qs.stringify({ ...values, [key]: value });
   }
   setQueryStringWithoutPageReload(`?${newQsValue}`);
 }
 
 function getQueryStringValue(key, queryString = window.location.search) {
-  const values = parse(queryString);
+  const values = qs.parse(queryString);
   return values[key];
 }
